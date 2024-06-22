@@ -1,0 +1,90 @@
+{% extends "recipes_sharing/base.html" %}
+
+{% block title %}Dettaglio Ricetta{% endblock %}
+
+
+
+{% block content %}
+<div class="recipe-detail">
+
+    <div class="recipe-header">
+        {% if recipe.image %}
+            <img src="{{ MEDIA_URL }}/{{ recipe.image.url }}" alt="Immagine {{ recipe.recipe_name }}" class="recipe-image">
+        {% else %}
+            <img src="" alt="Immagine non disponibile" class="recipe-image">
+        {% endif %}
+        <h1>{{ recipe.recipe_name }}</h1>
+    </div>
+
+    <div class="recipe-info">
+
+        <p class="author"><strong>Autore:</strong> <a href="{% url 'view_profile' recipe.author.username %}">{{ recipe.author.username }}</a></p>
+        <p><strong>Descrizione:</strong> {{ recipe.description }}</p>
+        <p><strong>Ingredienti:</strong> {{ recipe.ingredients }}</p>
+        <p><strong>Tempo di Cottura:</strong> {{ recipe.cooking_time }} minuti</p>
+        <p><strong>Difficoltà:</strong> {{ recipe.get_difficulty_display }}</p>
+        <p><strong>Categoria:</strong> {{ recipe.get_categories_display }}</p>
+        <p><strong>Calorie:</strong> {{ recipe.calories }} kcal</p>
+        <p><strong>Likes: </strong>{{ recipe.liked_by.count }}</p>
+    </div>
+
+    <div class="recipe-instructions">
+        <p><strong>Istruzioni per la Preparazione</strong></p>
+        <p> {{ recipe.preparation_instructions }}</p>
+    </div>
+
+    {% if user == recipe.author %}
+        <div class="author-buttons">
+            <form method="get" action="{% url 'edit_recipe' recipe.id %}">
+                <button type="submit" class="edit-button">Modifica</button>
+            </form>
+            <form method="post" action="{% url 'delete_recipe' recipe.id %}" onsubmit="return confirm('Sei sicuro di voler eliminare questa ricetta?');">
+                {% csrf_token %}
+                <button type="submit" class="delete-button">Elimina</button>
+            </form>
+        </div>
+    {% endif %}
+    
+    {% if user.is_authenticated %}
+    <div class="favorite-section">
+        {% if is_favorite %}
+            <form method="post" action="{% url 'like_recipe' recipe.id %}">
+                {% csrf_token %}
+                <button class="favorite-button"type="submit">Rimuovi dai preferiti</button>
+            </form>
+        {% else %}
+            <form method="post" action="{% url 'like_recipe' recipe.id %}">
+                {% csrf_token %}
+                <button class="favorite-button" type="submit">Aggiungi ai preferiti</button>
+            </form>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    
+    
+    <div class="comments-section">
+        <h1>Commenti</h1>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.author.username }}</strong> ha commentato:</p>
+                    <p>{{ comment.comment_content }}</p>
+                    <p><em>{{ comment.creation_date }}</em></p>
+                </div>
+            {% endfor %}
+        </div>
+    
+        {% if user.is_authenticated %}
+            <h4>Aggiungi un Commento</h4>
+            <form action="{% url 'add_comment' recipe.id %}" method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit">Invia</button>
+            </form>
+        {% else %}
+            <p>Effettua il <a href="{% url 'login' %}?next={{ request.path }}">login</a> per aggiungere un commento.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

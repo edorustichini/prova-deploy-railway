@@ -1,0 +1,16 @@
+{% extends 'recipes_sharing/base.html' %}
+
+{% block title %}Delete Profile{% endblock %}
+
+{% block content %}
+<!-- TODO: fai stile template delete profile-->
+<div class="edit-profile-view">
+    <h1>Eliminazione profilo {{ profile_user.username }}?</h1>
+    <p>Una volta fatta, questa operazione sarà irreversibile.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Profile</button>
+        <a href="{% url 'view_profile' profile_user.username %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

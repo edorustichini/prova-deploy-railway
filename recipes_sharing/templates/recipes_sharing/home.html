@@ -1,0 +1,21 @@
+{% extends 'recipes_sharing/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Ciao {{ request.user.username }}</h1>
+<h2>Esplora le ricette aggiunge di recente</h2>
+<div class="recent-recipes centered">
+    {% for recipe in recent_recipes %}
+        <div class="recipe-box">
+            <h3><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.recipe_name }}</a></h3>
+            <p><strong>Tempo di preparazione:</strong> {{ recipe.cooking_time }} minuti</p>
+            <p><strong>Difficoltà:</strong> {{ recipe.get_difficulty_display }}</p>
+            <p>{{ recipe.description }}</p>
+            <p><strong>Likes:</strong> {{ recipe.liked_by.count }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,17 @@
+{% extends 'recipes_sharing/base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Recipe{% endblock %}
+
+{% block content %}
+<div class="recipe-detail"> 
+    <h1>Edit {{ recipe.recipe_name }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save-button">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

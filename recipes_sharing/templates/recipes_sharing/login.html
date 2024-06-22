@@ -1,0 +1,36 @@
+{% extends 'recipes_sharing/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+
+{% block content %}
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="post" action="{% url 'login' %}" class="login-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+
+        <!--TODO: da valutare se usare questi messaggi -->
+        <!--{% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}-->
+
+        <button type="submit" class="login-button">Login</button>
+        <button type="button" class="register-button">
+            <a href="{% url 'register' %}">Register</a>
+        </button>
+    </form>
+</div>
+{% endblock %}

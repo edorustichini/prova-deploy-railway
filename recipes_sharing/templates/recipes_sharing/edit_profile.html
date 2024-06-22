@@ -1,0 +1,16 @@
+{% extends "recipes_sharing/base.html" %}
+
+{% block title %}Modifica Profilo{% endblock %}
+
+{% block content %}
+<div class="edit-profile-view">
+    <h2>Modifica il tuo Profilo</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+        <a href="{% url 'view_profile' user.username %}" class="btn btn-secondary">Annulla</a>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sito per Elaborato PPM backend{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <!-- Header principale, ereditato da altre pagine -->
+    <header>
+        <div class="header-container">
+            <h1>Recipes Sharing Website</h1>
+            <div class="header-links">
+                {% if user.is_authenticated %}
+                <p>Ciao, {{ user.username }}</p>
+                <a href="{% url 'view_profile' user.username %}">Vai al Profilo</a>
+                <a href="{% url 'create_recipe' %}">Aggiungi una Ricetta</a>
+                <a href="{% url 'logout' %}">Logout</a>
+
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Registrati</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+
+            <!-- Semplice form per la search TODO: da rivedere-->            
+            <form action="{% url 'search' %}" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="Cerca ricette">
+                <select name="difficulty">
+                    <option value="">All Difficulties</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <select name="category">
+                    <option value="">All Categories</option>
+                    <option value="A">Antipasto</option>
+                    <option value="P">Primo Piatto</option>
+                    <option value="S">Secondo Piatto</option>
+                    <option value="C">Contorno</option>
+                    <option value="D">Dolce</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+            
+            
+        </nav>
+
+    </header>
+    
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer >
+        <!-- Footer ereditato da altre pagine -->
+        <p>&copy; Elaborato backend PPM Edoardo Rustichini</p>
+    </footer>
+</body>
+</html>

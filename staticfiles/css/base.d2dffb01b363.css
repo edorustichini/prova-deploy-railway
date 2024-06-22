@@ -1,0 +1,593 @@
+/* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+
+header {
+    background-color: #f35353;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a:hover {
+            text-decoration: underline;
+            color: #ffffff8b;
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f56d19;
+        color: #fff;
+        
+        text-align: center;
+        a:hover {
+            text-decoration: underline;
+            color: #ffffff8b;
+        }
+    }  
+}
+
+a {
+    color: #fff;
+    size: 1.5 em;
+    margin: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    :hover {
+        color: #b3a9a9;
+        text-decoration: underline;
+        text-underline-offset: 1px;
+        text-decoration-color: white;
+    }
+}
+
+
+main {
+    margin: 20px;
+
+    color: black;
+    a {
+        color: black;
+
+    }
+    
+}
+
+.centered{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.recent-recipes {
+    width: 50%;
+    
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    /* per evitare overflow */
+    * {
+        box-sizing: border-box;
+        white-space: nowrap;
+        text-overflow: ellipsis ;
+        overflow: hidden;
+    }
+}
+
+.recipe-box {
+    background-color: #f9f9f9;
+    padding: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    width: 40%;
+    margin: 0;
+    h3 {
+        margin-top: 0;
+        font-size: 18px;
+    } 
+    p {
+        margin-bottom: 8px;
+    }
+}
+
+
+footer {
+    
+    margin-top: 20px;
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    a:hover {
+        text-decoration: underline;
+        color: #ffffff8b;
+    }
+    width: 100%;
+    
+}
+
+
+
+/*recipe-detail.css*/
+.recipe-detail {
+    margin: 32px auto;
+    max-width: 800px;
+    padding: 32px;
+    background-color: #fff;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    * {
+        box-sizing: border-box;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+}
+
+.recipe-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    > img {
+        max-width: 300px;
+        height: auto;
+        border-radius: 8px;
+        margin-left: 20px;
+    }
+
+    > h1 {
+        font-size: 2.5em;
+        margin: 0;
+        color: #333;
+    }
+}
+.recipe-info p {
+    strong {
+        font-weight: bold;
+        color: #b3a9a9;
+    }
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    author {
+        font-weight: bold;
+        color: black;
+    }
+}
+
+.recipe-image {
+    width: 100%; /* L'immagine occupa tutta la larghezza del suo contenitore */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
+    max-width: 500px; /* Limita la larghezza massima dell'immagine */
+    display: block; /* Rende l'immagine un elemento a blocco */
+    margin: 0 auto; /* Centra l'immagine orizzontalmente */
+}
+
+
+.recipe-instructions {
+    margin-top: 20px;
+    strong {
+        font-weight: bold;
+        size: 1.5em;
+    }
+    h1 {
+        size: 1.5em;
+    }
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    box {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #bd4242;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    
+    }
+    
+}
+
+.favorite-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.favorite-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.favorite-btn.add {
+    background-color: #ff6347;
+}
+
+.favorite-btn.remove {
+    background-color: #e5533d;
+}
+
+.favorite-btn.add:hover {
+    background-color: #e5533d;
+}
+
+.favorite-btn.remove:hover {
+    background-color: #c44d31;
+}
+
+.comments-section {
+    margin-top: 20px;
+    h1 {
+        font-size: 2em;
+    }
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.comment {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.comment p {
+    margin: 5px 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.comments-section button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    :hover {
+        background-color: #218838;
+    }
+    
+}
+
+
+/* EdIT E DELETE RECIPE */
+.author-controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: rgb(26, 26, 211);
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: blue;
+}
+
+.delete-button {
+    background-color: red; 
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #da190bc0;
+}
+
+
+/* STILE per EDIT_RECIPE.HTML */
+.edit-recipe{
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: rgb(26, 26, 211);
+        color: white;
+        :hover {
+            background-color: blue;
+        }
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        padding: 10px 20px;
+        display: inline-block;
+        :hover {
+            background-color: #5a6268;
+        }
+    }
+}
+
+/* Stile per Login */
+.login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 28px;
+    background-color: white;
+    border: 1px solid rgba(255, 255, 255, 0.664);
+    border-radius: 8px;
+    h1 {
+        size: 2em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-form .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .login-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .messages {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
+    
+    .messages p{
+        margin-bottom: 5px;
+    }
+    
+    .login-button,
+    .register-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #007bff; /* Blu per il pulsante di login */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+    }
+    
+    .register-button a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .login-button:hover,
+    .register-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .register-button {
+        margin-top: 10px;
+        background-color: #28a745; /* Verde per il pulsante di registrazione */
+    }
+    
+    .register-button:hover {
+        background-color: #218838;
+    }
+}
+
+
+/* Stile per profile view */
+.profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-header {
+        h1 {
+            margin-bottom: 10px;
+        }
+        h2 {
+            size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    }
+
+    .profile-image {
+        text-align: center;
+        margin-bottom: 20px;
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            padding: 5px;
+        }
+    }
+
+    .profile-recipes {
+        margin-top: 20px;
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    .recipe-list {
+        list-style-type: none;
+        padding: 0;
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        a {
+            font-size: 1.2em;
+            color: #007bff;
+            text-decoration: none;
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+        p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+    }
+
+
+    .edit-profile-button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .edit-profile-button .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .edit-profile-button .btn:hover {
+        background-color: #0056b3;
+    }
+
+}
+
+/* Stile per edit profile */
+.edit-profile-view {
+    /* TODO: SEMPLIFICA */
+    /* TODO: fai stili meglio per forms/bottoni edit e delete nei templates */
+    
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .edit-profile-form {
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .edit-profile-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .edit-profile-button .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .edit-profile-button .btn:hover {
+            background-color: #0056b3;
+        }
+    }
+    
+}
+
+
+.search-results {
+    width: 50%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+        font-size: 2em;
+        align-self: flex-start;
+    }
+    .recipe-box {
+        width: 100%;
+    }
+}
+
